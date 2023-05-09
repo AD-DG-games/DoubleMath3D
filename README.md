@@ -1,13 +1,12 @@
-דאבל חשבון #
+דאבל חשבון
 
 דביר גב 2039530583	
 
 אפיק דמרי 208494989
 
-קישור לגיט  "https://github.com/AD-DG-games/DoubleMath"
+קישור לגיט  "https://github.com/AD-DG-games/DoubleMath3D"
 
-קישור ל itch  "https://dvirgev.itch.io/double-math"
-
+קישור ל itch  "https://dvirgev.itch.io/doublemath3d"
 ## 1.	אתגר
 
 •	המחשק דורש יכולות מתמטיות פשוטות, ולכן דרשת יכולת מתמטית של ילד בכיתה א' (ולא לילדים ממש קטנים)
@@ -65,4 +64,3 @@
 ## 8.	בניית עולם
 
 •	מאחר והמשחק הוא משחק קלפים אין לו עולם יש לו לוח.
-"# DoubleMath3D" 
