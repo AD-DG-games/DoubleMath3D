@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //This script requires you to have setup your animator with 3 parameters, "InputMagnitude", "InputX", "InputZ"
 //With a blend tree to control the inputmagnitude and allow blending between animations.
@@ -13,6 +14,7 @@ public class MovementInput : MonoBehaviour {
 
 	public float InputX;
 	public float InputZ;
+	public float InputY;
 	public Vector3 desiredMoveDirection;
 	public bool blockRotationPlayer;
 	public float desiredRotationSpeed = 0.1f;
@@ -35,19 +37,21 @@ public class MovementInput : MonoBehaviour {
 
     public float verticalVel;
     private Vector3 moveVector;
-
+	private float lastTimeGround;
 	// Use this for initialization
 	void Start () {
 		anim = this.GetComponent<Animator> ();
 		cam = Camera.main;
 		controller = this.GetComponent<CharacterController> ();
+		jumper.Enable();
 	}
-	
+	[SerializeField] InputAction jumper;
 	// Update is called once per frame
 	void Update () {
+		verticalVel = -0.5f;
+		//JumpHandler();
 		InputMagnitude ();
-
-        isGrounded = controller.isGrounded;
+		isGrounded = controller.isGrounded;
         if (isGrounded)
         {
             verticalVel -= 0;
@@ -57,14 +61,7 @@ public class MovementInput : MonoBehaviour {
             verticalVel -= 1;
         }
 
-		if (Input.GetButton("Jump") && controller.isGrounded)
-		{
-			verticalVel = 60f;
-		}
-		else
-		{
-			//moveDirection.y = movementDirectionY;
-		}
+
 		moveVector = new Vector3(0, verticalVel * .2f * Time.deltaTime, 0);
         controller.Move(moveVector);
 
@@ -72,7 +69,12 @@ public class MovementInput : MonoBehaviour {
         {
 			transform.position = new Vector3(0, 40, 0);
         }
-    }
+		if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
+			anim.SetTrigger("normal");
+        }
+
+	}
 
     void PlayerMoveAndRotation() {
 		InputX = Input.GetAxis ("Horizontal");
@@ -92,7 +94,7 @@ public class MovementInput : MonoBehaviour {
 
 		if (blockRotationPlayer == false) {
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (desiredMoveDirection), desiredRotationSpeed);
-            controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
+			controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
 		}
 	}
 
@@ -117,6 +119,7 @@ public class MovementInput : MonoBehaviour {
 		//Calculate Input Vectors
 		InputX = Input.GetAxis ("Horizontal");
 		InputZ = Input.GetAxis ("Vertical");
+		InputY = jumper.triggered ? 1 : 0;
 
 		//anim.SetFloat ("InputZ", InputZ, VerticalAnimTime, Time.deltaTime * 2f);
 		//anim.SetFloat ("InputX", InputX, HorizontalAnimSmoothTime, Time.deltaTime * 2f);
@@ -125,12 +128,21 @@ public class MovementInput : MonoBehaviour {
 		Speed = new Vector2(InputX, InputZ).sqrMagnitude;
 
         //Physically move player
-
+        if (InputY > 0)
+        {
+			anim.SetTrigger("jump");
+			JumpHandler();
+        }
 		if (Speed > allowPlayerRotation) {
 			anim.SetFloat ("Blend", Speed, StartAnimTime, Time.deltaTime);
 			PlayerMoveAndRotation ();
 		} else if (Speed < allowPlayerRotation) {
 			anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
 		}
+	}
+	void JumpHandler()
+    {
+		//desiredMoveDirection.y = 8f;
+		controller.Move(Vector3.up * 200 * Time.deltaTime);
 	}
 }

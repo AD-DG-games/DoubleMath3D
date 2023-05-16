@@ -21,7 +21,7 @@ public class Mover : MonoBehaviour
 
     [HideInInspector]
     public bool canMove = true;
-
+    public Rigidbody playerEb;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -45,7 +45,11 @@ public class Mover : MonoBehaviour
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
-            moveDirection.y = jumpSpeed;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerEb.AddForce(Vector3.up * 8, ForceMode.Impulse);
+                //isOnGround = false;
+            }
         }
         else
         {
