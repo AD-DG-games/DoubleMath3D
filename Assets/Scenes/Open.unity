@@ -1771,11 +1771,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &634613963 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-  m_PrefabInstance: {fileID: 4757836857439838588}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &647655239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2376,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5644,6 +5639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004008938}
   - component: {fileID: 2004008937}
+  - component: {fileID: 2004008939}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -5668,10 +5664,10 @@ MonoBehaviour:
   lookAtTarget: 1
   target: {fileID: 5006512736820427411}
   playOnAwake: 1
-  playOnAwakeTime: 30
+  playOnAwakeTime: 10
   points:
-  - position: {x: 12.00174, y: 8.696202, z: 12.818016}
-    rotation: {x: 0.03535098, y: -0.9422112, z: 0.105302654, w: 0.31606942}
+  - position: {x: 13.707507, y: 14.354315, z: 8.038785}
+    rotation: {x: -0.1703495, y: 0.8151692, z: -0.29738435, w: -0.4669505}
     handleprev: {x: 0, y: 0, z: -1}
     handlenext: {x: 0, y: 0, z: 1}
     curveTypeRotation: 0
@@ -5725,8 +5721,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     chained: 1
-  - position: {x: -10.418051, y: 6.378002, z: 9.999199}
-    rotation: {x: -0.09335946, y: -0.85067564, z: 0.16168804, w: -0.49141818}
+  - position: {x: -10.118906, y: 8.469437, z: 9.729816}
+    rotation: {x: 0.07929277, y: 0.8931071, z: -0.17390229, w: 0.40722287}
     handleprev: {x: 0, y: 0, z: -1}
     handlenext: {x: 0, y: 0, z: 1}
     curveTypeRotation: 0
@@ -5780,8 +5776,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     chained: 1
-  - position: {x: -9.903594, y: 6.4661727, z: -10.912407}
-    rotation: {x: -0.089955606, y: -0.3098016, z: 0.02948929, w: -0.9460769}
+  - position: {x: -10.690764, y: 5.5529237, z: -1.9160002}
+    rotation: {x: 0.16729915, y: 0.6407338, z: -0.1458458, w: 0.7349832}
     handleprev: {x: 0, y: 0, z: -1}
     handlenext: {x: 0, y: 0, z: 1}
     curveTypeRotation: 0
@@ -5835,8 +5831,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     chained: 1
-  - position: {x: 9.446764, y: 5.7809606, z: -9.9355755}
-    rotation: {x: -0.056126446, y: 0.36425427, z: -0.02196484, w: -0.9293472}
+  - position: {x: 0.35062313, y: 2.0483823, z: -8.178193}
+    rotation: {x: 0.06340597, y: 0.6703311, z: -0.057662252, w: 0.73709625}
     handleprev: {x: 0, y: 0, z: -1}
     handlenext: {x: 0, y: 0, z: 1}
     curveTypeRotation: 0
@@ -5890,8 +5886,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     chained: 1
-  - position: {x: 9.186047, y: 1.6589079, z: 8.448687}
-    rotation: {x: 0.019116318, y: 0.8784237, z: 0.03534275, w: -0.4761905}
+  - position: {x: 7.231783, y: 1.1552737, z: -2.966187}
+    rotation: {x: -0.03038278, y: 0.5240538, z: 0.01871221, w: 0.8509374}
     handleprev: {x: 0, y: 0, z: -1}
     handlenext: {x: 0, y: 0, z: 1}
     curveTypeRotation: 0
@@ -5945,8 +5941,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     chained: 1
-  - position: {x: -7.3360023, y: 1.688982, z: 9.804001}
-    rotation: {x: -0.012878647, y: 0.9468072, z: 0.03806161, w: 0.31928292}
+  - position: {x: 1.8379087, y: 1.6759999, z: 4.3226833}
+    rotation: {x: -0.073479496, y: -0.26019105, z: -0.019862298, w: 0.9625523}
     handleprev: {x: 0, y: 0, z: -1}
     handlenext: {x: 0, y: 0, z: 1}
     curveTypeRotation: 0
@@ -6000,118 +5996,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     chained: 1
-  - position: {x: -10.002102, y: 1.0673497, z: -8.711121}
-    rotation: {x: -0.04032497, y: 0.35806367, z: 0.015437277, w: 0.9326983}
-    handleprev: {x: 0, y: 0, z: -1}
-    handlenext: {x: 0, y: 0, z: 1}
-    curveTypeRotation: 0
-    rotationCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveTypePosition: 1
-    positionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    chained: 1
-  - position: {x: 6.510311, y: 1.9709134, z: -9.365261}
-    rotation: {x: 0.0059154, y: -0.35315704, z: 0.0021900355, w: 0.9355429}
-    handleprev: {x: 0, y: 0, z: -1}
-    handlenext: {x: 0, y: 0, z: 1}
-    curveTypeRotation: 0
-    rotationCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveTypePosition: 1
-    positionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    chained: 1
-  - position: {x: -10.57291, y: 7.1510754, z: 10.150883}
-    rotation: {x: -0.091249175, y: -0.3750652, z: -0.03717771, w: 0.92174697}
+  - position: {x: -0.25693703, y: 1.5151258, z: 4.6688385}
+    rotation: {x: 0.02882535, y: -0.64643157, z: 0.024453789, w: 0.76203495}
     handleprev: {x: 0, y: 0, z: -1}
     handlenext: {x: 0, y: 0, z: 1}
     curveTypeRotation: 0
@@ -6188,6 +6074,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2004008939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004008936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &4757836857439838588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6355,7 +6263,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 60c2f0e0aaa8f8d4e9d23d7e3768653b, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4757836856755875626, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
 --- !u!114 &4974917318666967706
 MonoBehaviour:
@@ -6377,26 +6286,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
   m_PrefabInstance: {fileID: 4757836857439838588}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5006512736820427412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634613963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfeb3bb36f956e4a8bf5b38419447a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkingSpeed: 7.5
-  runningSpeed: 11.5
-  jumpSpeed: 8
-  gravity: 20
-  playerCamera: {fileID: 963194227}
-  lookSpeed: 2
-  lookXLimit: 45
-  canMove: 1
 --- !u!1 &6046758783495075785
 GameObject:
   m_ObjectHideFlags: 0

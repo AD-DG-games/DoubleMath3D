@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -75,26 +76,27 @@ public class CPC_CameraPath : MonoBehaviour
     private bool paused = false;
     private bool playing = false;
 
-    void Start ()
+    private PhotonView photonView;
+    void Start()
     {
-        
+
         if (Camera.main == null) { Debug.LogError("There is no main camera in the scene!"); }
-	    if (useMainCamera)
-	        selectedCamera = Camera.main;
-	    else if (selectedCamera == null)
-	    {
+        if (useMainCamera)
+            selectedCamera = Camera.main;
+        else if (selectedCamera == null)
+        {
             selectedCamera = Camera.main;
             Debug.LogError("No camera selected for following path, defaulting to main camera");
         }
 
-	    if (lookAtTarget && target == null)
-	    {
-	        lookAtTarget = false;
+        if (lookAtTarget && target == null)
+        {
+            lookAtTarget = false;
             Debug.LogError("No target selected to look at, defaulting to normal rotation");
         }
 
-	    foreach (var index in points)
-	    {
+        foreach (var index in points)
+        {
             if (index.curveTypeRotation == CPC_ECurveType.EaseInAndOut) index.rotationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
             if (index.curveTypeRotation == CPC_ECurveType.Linear) index.rotationCurve = AnimationCurve.Linear(0, 0, 1, 1);
             if (index.curveTypePosition == CPC_ECurveType.EaseInAndOut) index.positionCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -103,6 +105,7 @@ public class CPC_CameraPath : MonoBehaviour
 
         if (playOnAwake)
             PlayPath(playOnAwakeTime);
+        photonView = GetComponent<PhotonView>();
     }
 
     /// <summary>
@@ -245,7 +248,7 @@ public class CPC_CameraPath : MonoBehaviour
             ++currentWaypointIndex;
             if (currentWaypointIndex == points.Count - 1 && !looped) break;
             if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.Continue) currentWaypointIndex = 0;
-            if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.MoveToOtherScenes) SceneManager.LoadScene("Game");
+            if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.MoveToOtherScenes && photonView.IsMine) PhotonNetwork.LoadLevel(2);
         }
         StopPath();
     }
