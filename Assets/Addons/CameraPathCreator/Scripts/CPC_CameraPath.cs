@@ -80,7 +80,7 @@ public class CPC_CameraPath : MonoBehaviour
     void Start()
     {
 
-        if (Camera.main == null) { Debug.LogError("There is no main camera in the scene!"); }
+        //if (Camera.main == null) { Debug.LogError("There is no main camera in the scene!"); }
         if (useMainCamera)
             selectedCamera = Camera.main;
         else if (selectedCamera == null)

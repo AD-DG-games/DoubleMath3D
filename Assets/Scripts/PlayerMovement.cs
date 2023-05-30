@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("IsMoving", true);
 
+                
                 Vector3 velocity = movementDirection * speed;
                 velocity.y = ySpeed;
                 characterController.Move(velocity * Time.deltaTime);

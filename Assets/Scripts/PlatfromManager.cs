@@ -14,7 +14,7 @@ public class PlatfromManager : MonoBehaviour
 
     void Awake()
     {
-        text = transform.GetChild(0).GetComponent<TextMeshPro>();
+        text = transform.GetChild(4).GetComponent<TextMeshPro>();
     }
 
     public void SetNumbers(int a, char symbol, int b)
