@@ -1,5 +1,4 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -76,7 +75,6 @@ public class CPC_CameraPath : MonoBehaviour
     private bool paused = false;
     private bool playing = false;
 
-    private PhotonView photonView;
     void Start()
     {
 
@@ -105,7 +103,6 @@ public class CPC_CameraPath : MonoBehaviour
 
         if (playOnAwake)
             PlayPath(playOnAwakeTime);
-        photonView = GetComponent<PhotonView>();
     }
 
     /// <summary>
@@ -248,7 +245,7 @@ public class CPC_CameraPath : MonoBehaviour
             ++currentWaypointIndex;
             if (currentWaypointIndex == points.Count - 1 && !looped) break;
             if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.Continue) currentWaypointIndex = 0;
-            if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.MoveToOtherScenes && photonView.IsMine) PhotonNetwork.LoadLevel(2);
+            //if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.MoveToOtherScenes && photonView.IsMine) PhotonNetwork.LoadLevel(2);
         }
         StopPath();
     }

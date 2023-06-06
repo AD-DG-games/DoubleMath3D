@@ -5194,6 +5194,7 @@ GameObject:
   - component: {fileID: 6401754318533672823}
   - component: {fileID: 2138415342884768693}
   - component: {fileID: 2138415342884768691}
+  - component: {fileID: 5519645080007428878}
   - component: {fileID: 2138415342884768690}
   - component: {fileID: 2138415342884768692}
   m_Layer: 0
@@ -5255,7 +5256,7 @@ Animator:
   m_GameObject: {fileID: 7965953473547292004}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 82a2914d8f86c62488456950c8330e38, type: 3}
-  m_Controller: {fileID: 9100000, guid: b2dd29596bd16f049a1c7492791a0cc3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5c71f86b69240124dab961d6f4df670e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5283,6 +5284,31 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.98, z: 0}
+--- !u!114 &5519645080007428878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965953473547292004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 1
+  AllowStateAuthorityOverride: 0
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 72e2473441f2efb40a36ce5747648fd4
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 2138415342884768690}
+  - {fileID: 2138415342884768692}
+  SimulationBehaviours: []
 --- !u!114 &2138415342884768690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5292,11 +5318,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7965953473547292004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d7db55c6407434eadfdc2456d4fa51, type: 3}
+  m_Script: {fileID: 11500000, guid: d38d25d9acdf15546ad7bc594a0c86ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   rotationSpeed: 720
-  jumpSpeed: 7
+  jumpSpeed: 4
+  speed: 4
   jumpButtonGracePeriod: 0.2
   jumpHorizontalSpeed: 3
   cameraTransform: {fileID: 0}
@@ -5309,10 +5337,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7965953473547292004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b35f80eff40ce841becf909ad775b5b, type: 3}
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMagnitude: 1
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 6401754318533672823}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!1 &7977412870579845377
 GameObject:
   m_ObjectHideFlags: 0
