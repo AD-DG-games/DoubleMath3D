@@ -1,3 +1,4 @@
+using Cinemachine;
 using Fusion;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class PlayerMovement : NetworkBehaviour
     private float? jumpButtonPressedTime;
     private bool isJumping;
     private bool isGrounded;
+    private bool isWantJump;
 
     // Start is called before the first frame update
     public override void Spawned()
@@ -25,12 +27,22 @@ public class PlayerMovement : NetworkBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
-        if(true)
+        cameraTransform = GameObject.Find("Camera").GetComponent<Transform>();
+        if (HasStateAuthority)
         {
-            cameraTransform = GameObject.Find("Camera").GetComponent<Transform>();
+            CinemachineFreeLook cinemachine = GameObject.Find("Third Person Camera").GetComponent<CinemachineFreeLook>();
+            cinemachine.LookAt = transform;
+            cinemachine.Follow = transform;
+            isWantJump = false;
         }
     }
-
+    public void Update()
+    {
+        if (HasStateAuthority && Input.GetButtonDown("Jump"))
+        {
+            isWantJump = true;
+        }
+    }
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
@@ -61,9 +73,10 @@ public class PlayerMovement : NetworkBehaviour
             lastGroundedTime = Time.time;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (isWantJump)
         {
             jumpButtonPressedTime = Time.time;
+            isWantJump = false;
         }
 
         if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)

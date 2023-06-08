@@ -7,8 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(TextMeshPro))]
-public class GameManger : MonoBehaviour
+public class GameManger : NetworkBehaviour
 {
     //[SerializeField] ScoreField score;
     [SerializeField] PlatfromManager[] platfroms;
@@ -72,6 +71,19 @@ public class GameManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Random.InitState(DateTime.Now.Minute);
+        platfroms = new PlatfromManager[9];
+        screans = new ScreanManager[4];
+        for (int i = 1; i <= 9; i++)
+        {
+            string name = "Floor (" + i + ")";
+            platfroms[i-1] = GameObject.Find(name).GetComponent<PlatfromManager>();
+        }
+        for (int i = 1; i <= 4; i++)
+        {
+            string name = "TV (" + i + ")";
+            screans[i-1] = GameObject.Find(name).GetComponent<ScreanManager>();
+        }
         timeLeft = maxTime;
         chosenPlatfroms = new int[howCorrect];
         NewRound();
@@ -109,5 +121,10 @@ public class GameManger : MonoBehaviour
                 screan.SetTime(timeLeft);
             }
         }
+    }
+
+    public void PlayerJoined(PlayerRef player)
+    {
+        throw new NotImplementedException();
     }
 }
