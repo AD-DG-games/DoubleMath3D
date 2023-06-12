@@ -23,7 +23,6 @@ public enum CPC_EAfterLoop
 {
     Continue,
     Stop,
-    MoveToOtherScenes
 }
 
 [System.Serializable]
@@ -245,7 +244,6 @@ public class CPC_CameraPath : MonoBehaviour
             ++currentWaypointIndex;
             if (currentWaypointIndex == points.Count - 1 && !looped) break;
             if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.Continue) currentWaypointIndex = 0;
-            //if (currentWaypointIndex == points.Count && afterLoop == CPC_EAfterLoop.MoveToOtherScenes && photonView.IsMine) PhotonNetwork.LoadLevel(2);
         }
         StopPath();
     }

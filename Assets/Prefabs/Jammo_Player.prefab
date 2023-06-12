@@ -5194,13 +5194,17 @@ GameObject:
   - component: {fileID: 6401754318533672823}
   - component: {fileID: 2138415342884768693}
   - component: {fileID: 2138415342884768691}
+  - component: {fileID: 414722379968702294}
+  - component: {fileID: 8773358461935258468}
   - component: {fileID: 5519645080007428878}
   - component: {fileID: 2138415342884768690}
   - component: {fileID: 2138415342884768692}
   - component: {fileID: 2984796538182289446}
+  - component: {fileID: 1970747519564203312}
+  - component: {fileID: 301382682244414429}
   m_Layer: 0
   m_Name: Jammo_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5285,6 +5289,36 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.98, z: 0}
+--- !u!136 &414722379968702294
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965953473547292004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.98, z: 0}
+--- !u!54 &8773358461935258468
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965953473547292004}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &5519645080007428878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5388,6 +5422,34 @@ MonoBehaviour:
     _hash: -814817977
   StateHashes: 000000002638cb43a21b1dac48d3833bccf055d489f787200dd451cf138e390ffdecf17ab0e59c38f34baf3b
   TriggerHashes: 00000000
+--- !u!114 &1970747519564203312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965953473547292004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a1a65a09af6254cac5b42c8cc009ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &301382682244414429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965953473547292004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc7811df540c894e9003f870fc1c0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggeringTag: Terrain
+  EndScenes: End
+  loseColor: {r: 1, g: 0.050980393, b: 0.3647059, a: 0}
+  WinColor: {r: 0.17254902, g: 0.9490196, b: 0.62352943, a: 0}
 --- !u!1 &7977412870579845377
 GameObject:
   m_ObjectHideFlags: 0

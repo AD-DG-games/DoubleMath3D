@@ -1,3 +1,4 @@
+using Cinemachine;
 using Fusion;
 using System;
 using System.Collections;
@@ -7,7 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class GameManger : NetworkBehaviour
+public class GameManger : MonoBehaviour
 {
     //[SerializeField] ScoreField score;
     [SerializeField] PlatfromManager[] platfroms;
@@ -16,6 +17,7 @@ public class GameManger : NetworkBehaviour
     [SerializeField] int max = 10;
     [SerializeField] int howCorrect = 3;
     [SerializeField] int maxTime;
+    [SerializeField] AudioSource timeOut;
     private int num;
     private int[] chosenPlatfroms;
     private int timeLeft;
@@ -71,6 +73,8 @@ public class GameManger : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeOut = GetComponent<AudioSource>();
+        GameObject.Find("Camera").GetComponent<CinemachineBrain>().enabled = true;
         Random.InitState(DateTime.Now.Minute);
         platfroms = new PlatfromManager[9];
         screans = new ScreanManager[4];
@@ -97,6 +101,10 @@ public class GameManger : NetworkBehaviour
             timeLeft = maxTime;
             StartCoroutine(EndRound());
         }
+        else if (timeLeft == 6)
+        {
+            timeOut.Play();
+        }
     }
     public IEnumerator EndRound()
     {
@@ -121,10 +129,5 @@ public class GameManger : NetworkBehaviour
                 screan.SetTime(timeLeft);
             }
         }
-    }
-
-    public void PlayerJoined(PlayerRef player)
-    {
-        throw new NotImplementedException();
     }
 }

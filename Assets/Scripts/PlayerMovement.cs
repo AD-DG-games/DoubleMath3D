@@ -27,14 +27,18 @@ public class PlayerMovement : NetworkBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
-        cameraTransform = GameObject.Find("Camera").GetComponent<Transform>();
         if (HasStateAuthority)
         {
+            cameraTransform = GameObject.Find("Camera").GetComponent<Transform>();
             CinemachineFreeLook cinemachine = GameObject.Find("Third Person Camera").GetComponent<CinemachineFreeLook>();
             cinemachine.LookAt = transform;
             cinemachine.Follow = transform;
             isWantJump = false;
         }
+    }
+    public void Start()
+    {
+        Spawned();
     }
     public void Update()
     {
@@ -46,7 +50,7 @@ public class PlayerMovement : NetworkBehaviour
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
-        if(!HasStateAuthority)
+        if (!HasStateAuthority)
         { 
             return;
         }

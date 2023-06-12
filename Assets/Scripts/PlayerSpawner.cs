@@ -1,29 +1,33 @@
+using Cinemachine;
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
     public GameObject GameManagerPrefab;
+
     public int maxHowManyPlayers;
-    private int howManyPlayers;
+    private int howManyPlayers = 0;
     public void PlayerJoined(PlayerRef player)
     {
         howManyPlayers++;
         Debug.Log(howManyPlayers);
-        Debug.Log(player == Runner.LocalPlayer);
         if (player == Runner.LocalPlayer)
         {
-            int  i = (int)Random.Range(0, 9 + 1);
+            int i = (new System.Random()).Next(1, 9 + 1);
             string name = "Floor (" + i + ")";
             Vector3 pos = GameObject.Find(name).transform.position;
-            Runner.Spawn(PlayerPrefab, pos, Quaternion.identity, player);
+            Runner.Spawn(PlayerPrefab, pos, Quaternion.identity);
         }
         if (howManyPlayers == maxHowManyPlayers)
         {
-            Runner.Spawn(GameManagerPrefab, Vector3.zero, Quaternion.identity, null);
+            Runner.SetActiveScene("Game");
+
+
         }
     }
 }
