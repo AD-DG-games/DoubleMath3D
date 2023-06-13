@@ -14,6 +14,10 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
     private int howManyPlayers = 0;
     public void PlayerJoined(PlayerRef player)
     {
+        if(Runner.GameMode == GameMode.Single)
+        {
+            maxHowManyPlayers = 1;
+        }
         howManyPlayers++;
         Debug.Log(howManyPlayers);
         if (player == Runner.LocalPlayer)
@@ -22,6 +26,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
             string name = "Floor (" + i + ")";
             Vector3 pos = GameObject.Find(name).transform.position;
             Runner.Spawn(PlayerPrefab, pos, Quaternion.identity);
+            GameObject.Find("Canvas").transform.GetChild(2).gameObject.active = true;
         }
         if (howManyPlayers == maxHowManyPlayers)
         {

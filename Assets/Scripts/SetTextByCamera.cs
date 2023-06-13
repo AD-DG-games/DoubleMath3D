@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class SetTextByCamera : MonoBehaviour
@@ -28,6 +30,6 @@ public class SetTextByCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
